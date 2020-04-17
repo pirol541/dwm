@@ -21,10 +21,10 @@ static const char *colors[][7]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] =  { col_gray3, col_black, col_black },
 	[SchemeSel]  =  { col_gray1, col_yellow,  col_yellow },
-    [Scheme3]   =   { col_yellow, col_black, col_black },   /* \x03 (in vim CTRL+v, then x,0,3)*/
-	[Scheme4]   =   { col_blue, col_black, col_black },     /* \x04 */
-	[Scheme5]   =   { col_green, col_black, col_black },    /* \x05 */
-	[Scheme6]   =   { col_red, col_black, col_black },      /* \x06 */
+    [Scheme3]   =   { col_yellow, col_black, col_black },
+	[Scheme4]   =   { col_blue, col_black, col_black },
+	[Scheme5]   =   { col_green, col_black, col_black },
+	[Scheme6]   =   { col_red, col_black, col_black },
 };
 
 /* tagging */
@@ -68,13 +68,12 @@ static Button buttons[] = {
 	{ ClkTagBar,        0,          Button1,    view,       {0} },
 };
 
-#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/*            modifier          key    function        argument */
 	{ KeyPress,   MODKEY,           44,    focusstack,     {.i = +1 } },
 	{ KeyPress,   MODKEY,           45,    focusstack,     {.i = -1 } },
-	{ KeyPress,   MODKEY,           31,    incnmaster,     {.i = +1 } },
-	{ KeyPress,   MODKEY,           40,    incnmaster,     {.i = -1 } },
+	/*{ KeyPress,   MODKEY,           31,    incnmaster,     {.i = +1 } },*/
+	/*{ KeyPress,   MODKEY,           40,    incnmaster,     {.i = -1 } },*/
 	{ KeyPress,   MODKEY,           43,    setmfact,       {.f = -0.05} },
 	{ KeyPress,   MODKEY,           46,    setmfact,       {.f = +0.05} },
 	{ KeyPress,   MODKEY,           36,    spawn,          SHCMD("$TERMINAL") },
@@ -111,7 +110,7 @@ static Key keys[] = {
 	{ KeyPress,   0,                246,   spawn,          SHCMD("sleep 1; pkill -SIGRTMIN+4 dwmblocks") },
 	{ KeyPress,   0,                179,   spawn,          SHCMD("toggleMouse") },
 	{ KeyPress,   0,                225,   spawn,          SHCMD("exec $BROWSER \"https://duckduckgo.com/?q=$(xclip -out -selection primary)\"") },
-	{ KeyPress,   0,                128,   spawn,          SHCMD("exec $TERMINAL -e $EDITOR $HOME/documents/notes/todo") },
+	{ KeyPress,   0,                128,   spawn,          SHCMD("exec $TERMINAL -e $EDITOR $HOME/documents/notes/00_todo") },
 	{ KeyPress,   0,                152,   spawn,          SHCMD("exec $TERMINAL -e calcurse -D $HOME/.config/calcurse") },
 	TAGKEYS(                        10,                    0)
 	TAGKEYS(                        11,                    1)
