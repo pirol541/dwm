@@ -203,6 +203,8 @@ static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
+static void unhidebar(const Arg *arg);
+static void hidebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
@@ -1577,6 +1579,27 @@ void
 togglebar(const Arg *arg)
 {
 	selmon->showbar = !selmon->showbar;
+	updatebarpos(selmon);
+	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	arrange(selmon);
+}
+
+void
+unhidebar(const Arg *arg)
+{
+    if (selmon->showbar == 0)
+    {
+	    selmon->showbar = 1;
+	    updatebarpos(selmon);
+	    XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	    arrange(selmon);
+    }
+}
+
+void
+hidebar(const Arg *arg)
+{
+	selmon->showbar = 0;
 	updatebarpos(selmon);
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
 	arrange(selmon);
