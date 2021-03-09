@@ -46,8 +46,3 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
-
-
-TODO
-----
-My implementation of showing/hiding the bar needs work. Maybe look at holdbar.
